@@ -18,7 +18,7 @@ class Project {
 type Listener<T> = (items: T[]) => void;
 class State<T> {
   protected listeners: Listener<T>[] = [];
-  addListeners(listenerFn: Listener<T>) {
+  addListener(listenerFn: Listener<T>) {
     this.listeners.push(listenerFn);
   }
 }
@@ -179,7 +179,7 @@ class ProjectList extends Component<HTMLDivElement, HTMLElement> {
   }
 
   configure() {
-    projectState.addListner((projects: Project[]) => {
+    projectState.addListener((projects: Project[]) => {
       const relevantProjects = projects.filter((prj) => {
         if (this.type === "active") {
           return prj.status === ProjectStatus.Active;
